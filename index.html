@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>    
+    <title>Neighborhood Map</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <h3 id="welcome">Welcome to the neighborhood of Mountain View!</h4>
+    <div>
+        <div id="planner" class = "container">        
+        
+        <h4 id="choose">Choose the type of listings you want to see</h2>            
+        <select class="form-control drop-down"
+                data-bind="options: availableListingOptions, 
+                value: selectedListing, 
+                event:{ change:handleMenuSelection}">       
+        </select>       
+        
+        <ul class = "list-group list" data-bind = "foreach : listings">            
+            <li class="list-group-item list-item"
+             data-bind="text:$data, value:$parent.selectedLocation,
+             click:$parent.handleListItemClick"></li>                      
+        </ul> 
+        </div>               
+    </div>
+        
+    <div id="map" class = "container"></div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/knockout.js"></script>
+<script src="js/data.js"></script>
+<script src="js/apiCalls.js"></script>
+<script src="js/app.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIdkzjRChrILxgKCYay5cYnGtHnENaf5E&callback=init"
+async defer>
+</script>
+
+</html>

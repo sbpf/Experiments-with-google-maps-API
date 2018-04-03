@@ -1,0 +1,46 @@
+#welcome{
+    color: wheat;
+    text-align: center;
+}
+#map{
+    height:100%;
+    width:80%;
+}
+#planner{
+    background-color:rgba(7, 7, 27, 0.884);
+    color:wheat;
+    float:left;
+    width:20%;
+    height:100%;
+}
+#choose{
+    padding-top:2%;
+    padding-bottom:3%;
+}
+.drop-down{
+    background-color:gray;
+    color:black;
+    font-weight: bold;
+}
+.list{
+    padding-top:5%;
+}
+.list-item{   
+   background-color:gray;
+   color:black;     
+}
+
+.list-item:hover{
+    background-color:wheat;
+}
+
+.location{
+   margin-bottom:1px;
+}
+
+html, body {
+    background-color:rgba(7, 7, 27, 0.884);    
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
