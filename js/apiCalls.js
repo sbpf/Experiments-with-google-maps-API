@@ -26,8 +26,7 @@ function createMarker(markerData){
     //Add a listener event to markers for animating when clicked          
     marker.addListener('click',function(){
         setCurrentLocation(markerData.name);
-        animateMarker(marker);
-        populateInfoWindow(markerData.name,marker);
+        highlightMarker(self.currentSelectedLocation); 
     });  
     return marker; 
 }
@@ -60,23 +59,16 @@ function displayRelevantListings(typeOfListing){
 }
 
 function highlightMarker(selectedLocation){
-    var index = locationList.findIndex(x => x.name==selectedLocation);
-    var selectedMarker = locationList[index];
-    animateMarker(selectedMarker.marker);
-    populateInfoWindow(selectedMarker.name,selectedMarker.marker)
-}
+    //animate marker
+    selectedLocation.marker.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(function () { selectedLocation.marker.setAnimation(null);}, 1400);
 
-function animateMarker(marker){
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-    setTimeout(function () { marker.setAnimation(null);}, 1400);    
-}
-
-function populateInfoWindow(name,marker){
-    infoWindow.setContent(name);
-    infoWindow.open(map,marker);
+    //populate info window
+    infoWindow.setContent(selectedLocation.name);
+    infoWindow.open(map,selectedLocation.marker);
 }
 
 function setCurrentLocation(name){
-    var index = locationList.findIndex(x => x.name==selectedLocation);
-    self.currentSelectedLocation(locationList[index]);
+    var index = locationList.findIndex(x => x.name==name);
+    self.currentSelectedLocation = locationList[index];
 }

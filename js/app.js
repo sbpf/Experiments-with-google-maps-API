@@ -8,8 +8,7 @@ function ViewModel(){
     self.availableListingOptions= ko.observableArray(['All','Restaurants', 'Coffee Shops','Transit Stations', 'Parks', 'Fitness Centres', 'Libraries']);
     self.selectedListing = ko.observable('All');
     self.listings = ko.observableArray([]);
-    self.selectedLocation = ko.observable();
-   //self.locationList = ko.observableArray([]);
+    self.selectedLocationName = ko.observable();
     self.currentSelectedLocation = ko.observable();    
 
     //Initialize the app by displaying map and markers
@@ -33,8 +32,10 @@ function ViewModel(){
 
     //Handle the list item
     self.handleListItemClick = function(){      
-        self.selectedLocation = this;
-        highlightMarker(self.selectedLocation);
+        self.selectedLocationName = this;
+        var index = locationList.findIndex(x => x.name==self.selectedLocationName);
+        self.currentSelectedLocation = locationList[index];
+        highlightMarker(self.currentSelectedLocation);       
     }    
 }
 
